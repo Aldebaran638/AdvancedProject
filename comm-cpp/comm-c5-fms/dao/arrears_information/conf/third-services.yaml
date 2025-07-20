@@ -1,0 +1,19 @@
+rocket-mq:
+    name-server: 101.37.22.195:9876
+seata:
+  default: 8.156.69.89:7091
+logstash:
+  host: 101.200.60.248
+fastdfs:
+  charset: UTF-8
+  connect-timeout: 5
+  network-timeout: 30
+  http-secret-key: FastDFS1234567890
+  http-anti-steal-token: true
+  connection-pool-max-idle: 20
+  connection-pool-max-total: 20
+  connection-pool-min-idle: 2
+  nginx-servers: 39.103.62.65:8888
+  tracker-servers: 39.103.62.65:22122
+easy-es:
+  address: 101.200.60.248:9200

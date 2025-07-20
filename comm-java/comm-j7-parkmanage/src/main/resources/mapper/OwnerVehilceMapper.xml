@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zeroone.star.parkmanage.mapper.OwnerVehicleMapper">
+
+
+    <select id="getVehicleInfoByCarId"
+            resultType="com.zeroone.star.parkmanage.entity.VehicleDO">
+        SELECT
+            oc.car_id AS carId,
+            oc.car_num AS carNumber,
+            IFNULL(td_car_type.name, '-') AS carTypeName, -- 车辆类型名称
+            IFNULL(oc.car_brand, '-') AS carBrand,
+            IFNULL(oc.car_color, '-') AS carColor,
+            oc.ps_id AS psId,
+            IFNULL(ps.num, '-') AS parkingSpaceNum, -- 车位编号
+            IFNULL(pa.num, '-') AS areaNum, -- 车位区域号
+            pa.pa_id AS paId_parking_area, -- 停车区域ID，与VehicleDO中的paId区分
+            IFNULL(pa.num, '-') AS paName, -- 停车场名称，此处使用pa.num代替pa.name
+            oc.owner_id AS ownerId,
+            IFNULL(bo.name, '-') AS ownerName, -- 业主姓名
+            IFNULL(bo.link, '-') AS ownerTel, -- 业主手机号
+            oc.start_time AS startTime,
+            oc.end_time AS endTime,
+            oc.community_id AS communityId,
+            IFNULL(oc.remark, '-') AS remark,
+            IFNULL(td_state.name, '-') AS status, -- 状态名称
+            (SELECT count(moc.member_id)
+             FROM owner_car moc
+             WHERE moc.car_id = oc.car_id
+               AND moc.car_type_cd != oc.car_type_cd
+               AND moc.car_type_cd = '1002'
+               AND moc.status_cd = '0') AS memberVehicle, -- 成员车辆数量
+            IFNULL(r.room_num, '-') AS room, -- 房屋号
+            oc.b_id AS bId,
+            IFNULL(bo.id_card, '-') AS idCard,
+            oc.car_type AS carType, -- 车辆类型编码
+            oc.car_type_cd AS carTypeCd, -- 车辆主副类型编码
+            IFNULL(td_car_type_cd.name, '-') AS carTypeCdName, -- 车辆主副类型名称
+            oc.state AS state, -- 车辆状态编码
+            oc.member_id AS memberId,
+            oc.lease_type AS leaseType, -- 租赁类型编码
+            IFNULL(td_lease_type.name, '-') AS leaseTypeName, -- 租赁类型名称
+            ps.parking_type AS parkingType, -- 车位类型编码
+            IFNULL(td_parking_type.name, '-') AS parkingTypeName -- 车位类型名称
+        FROM
+            owner_car oc
+        LEFT JOIN
+            building_owner bo ON oc.owner_id = bo.member_id AND bo.status_cd = '0'
+        LEFT JOIN
+            parking_space ps ON oc.ps_id = ps.ps_id AND ps.status_cd = '0'
+        LEFT JOIN
+            parking_area pa ON ps.pa_id = pa.pa_id AND pa.status_cd = '0'
+        LEFT JOIN
+            t_dict td_car_type ON oc.car_type = td_car_type.status_cd AND td_car_type.table_name = 'owner_car' AND td_car_type.table_columns = 'car_type'
+        LEFT JOIN
+            t_dict td_state ON oc.state = td_state.status_cd AND td_state.table_name = 'owner_car' AND td_state.table_columns = 'state'
+        LEFT JOIN
+            t_dict td_lease_type ON oc.lease_type = td_lease_type.status_cd AND td_lease_type.table_name = 'owner_car' AND td_lease_type.table_columns = 'lease_type'
+        LEFT JOIN
+            t_dict td_car_type_cd ON oc.car_type_cd = td_car_type_cd.status_cd AND td_car_type_cd.table_name = 'owner_car' AND td_car_type_cd.table_columns = 'car_type_cd'
+        LEFT JOIN
+            t_dict td_parking_type ON ps.parking_type = td_parking_type.status_cd AND td_parking_type.table_name = 'parking_space' AND td_parking_type.table_columns = 'parking_type'
+        LEFT JOIN
+            building_owner_room_rel borr ON oc.owner_id = borr.owner_id AND borr.status_cd = '0'
+        LEFT JOIN
+            building_room r ON borr.room_id = r.room_id AND r.status_cd = '0'
+        WHERE
+            oc.car_id = #{carId}
+            AND oc.status_cd = '0'
+    </select>
+
+
+
+</mapper>

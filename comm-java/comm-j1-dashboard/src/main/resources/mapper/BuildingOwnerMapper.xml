@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zeroone.star.dashboard.mapper.BuildingOwnerMapper">
+
+    <!-- 已注册住户数量 -->
+    <select id="getRegisteredCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) AS registered_count
+        FROM building_owner
+        WHERE state = '2000' AND community_id = #{communityId};
+    </select>
+
+    <!-- 未注册住户数量 -->
+    <select id="getUnregisteredCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) AS unregistered_count
+        FROM building_owner
+        WHERE state != '2000' AND community_id = #{communityId};
+    </select>
+
+    <!-- 未绑定房屋的住户数量 -->
+    <select id="getUnboundCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) AS unbound_count
+        FROM building_owner bo
+                 LEFT JOIN building_owner_room_rel br ON bo.owner_id = br.owner_id
+        WHERE br.owner_id IS NULL AND bo.community_id = #{communityId};
+    </select>
+
+    <!-- 已绑定房屋的住户数量 -->
+    <select id="getBoundCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) AS bound_count
+        FROM building_owner bo
+                 JOIN building_owner_room_rel br ON bo.owner_id = br.owner_id
+        WHERE bo.community_id = #{communityId};
+    </select>
+
+
+</mapper>

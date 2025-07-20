@@ -1,0 +1,5 @@
+server:
+  port: ${sp.parkmanage}
+spring:
+  application:
+    name: ${sn.parkmanage}

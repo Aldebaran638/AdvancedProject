@@ -1,0 +1,454 @@
+﻿experem:
+ get:
+  summary: 获取预缴费用提醒列表（条件+分页）
+ export:
+  summary: 导出预缴费用提醒
+  summary2: 导出到期费用提醒
+ field:
+  id: 编号
+  assets: 房号/车辆/合同
+  sex: 性别
+  seq: 费用编号
+  item: 费用项
+  createTime: 费用开始时间
+  pId: 房屋编号/合同名称
+  name: 业主名称
+  tel: 业主手机号
+  logColumn: 费用项
+  itName: 名称
+  type: 文件类型
+  downLoader: 下载人
+  downloadTime: 下载时间
+  status: 状态
+  note: 备注
+  operation: 操作
+  daysToStart: 距离费用开始时间（天）
+  BuildingNo: 房屋编号/合同  
+  Name: 业主名称
+  Telephone: 业主手机号
+  Expenses: 费用项
+ query:
+  summary: 获取到期费用提醒列表（条件+分页）
+  Expenses: 物业费
+  Name: 张三
+
+arredet:
+ query: 查询欠费明细表 
+ export: 导出欠费明细表
+ id: 费用编号
+ room: 房号 
+ ow: 业主
+ owt: 业主电话
+ area: 面积
+ ei: 费用项
+ ad: 欠费时长
+ aa: 欠费金额  
+ dool: 栋
+ dan: 单元
+ fwbh: 房屋编号
+ st: 开始时间
+ et: 结束时间
+ filename: 欠费明细文件名
+ objname: 缴费对象名称
+ feename:  费用名称
+ feecreatetime: 费用创建时间   
+ createtime: 记录创建时间   
+ oweamount: 欠费金额总和
+ deadlinetime:   欠费截止时间 
+
+datastat:
+ costs:
+  receiveAmount: 实收金额
+  owingAmount: 欠费金额
+  discountAmount: 优惠金额
+  penaltyAmount: 滞纳金
+  accountDeposit: 账户预存
+  accountDeduction: 账户扣款
+  tmpCarIncome: 临时车收入
+  depositRefund: 押金退款
+  refundOrderCount: 退款订单数
+  refundAmount: 退款金额
+  chargingAmount: 充电金额
+  monthlyCardIncome: 月卡实收
+ workOrder:
+  complaintCount: 投诉单
+  unfinishedComplaintCount: 未完成投诉单
+  finishedComplaintCount: 已完成投诉单
+  repairCount: 保修单
+  unfinishedRepairCount: 未完成保修单
+  finishedRepairCount: 已完成保修单
+  inspectionCount: 巡检单
+  unfinishedInspectionCount: 未完成巡检单
+  finishedInspectionCount: 已完成巡检单
+  maintenanceCount: 保养单
+  unfinishedMaintenanceCount: 未完成保养单
+  finishedMaintenanceCount: 已完成保养单
+  ownerFeedbackCount: 业主反馈单
+  chargingOrderCount: 充电订单
+ access:
+  vehicleEntryCount: 进场车辆数
+  vehicleExitCount: 出场车辆数
+  personnelEntryCount: 进场人员数
+  faceSyncCount: 人脸同步数
+  purchaseInboundCount: 采购入库数
+  requisitionOutboundCount: 领用出库数
+  purchaseInboundAmount: 采购入库金额
+  completedInspectionCount: 已完成巡检单
+  allocationCount: 调拨数量
+  houseDecorationCount: 房屋装修数
+  itemReleaseCount: 物品放行数
+  houseDeliveryCount: 房屋交付数
+  houseReturnCount: 房屋退还数
+  ownerBindingCount: 业主绑定数
+  absenteeismCount: 缺勤数
+ other:
+  venueReservationCount: 场地预约数
+  contractCount: 合同数
+  contractAssetChangeCount: 合同资产变更数
+  leaseTermChangeCount: 租期变更数
+  entityChangeCount: 实体变更数
+  expiringContractCount: 到期合同数
+  vehicleCount: 车辆数
+  parkingSpaceApplicationCount: 车位申请数
+  parkingTicketPurchaseCount: 停车票购买数
+  parkingTicketVerificationCount: 停车票核销数
+  giftCouponCount: 赠送优惠券数
+  usedCouponCount: 使用优惠券数
+  houseReturnCount: 退房数
+  pointsUsed: 积分使用数
+ field:
+  startDate: 开始日期
+  endDate: 结束日期
+  type: 查询类型
+  communityId: 社区ID
+  communityName: 社区名称
+  module1:
+   module_name: 欠费明细
+   room_name: 房屋编号
+   name: 业主名称
+   link: 手机号
+   qianfei: 欠费
+   wuye: 物业费
+   yajin: 押金
+   tingche: 停车费
+   meiqi: 煤气费
+   qunuan: 取暖
+   weixiu: 维修费
+   fuwu: 服务费
+   qita: 其他
+   shuifei: 水费
+   dianfei: 电费
+   zujin: 租金
+   gongtan: 公摊费
+  module2:
+   module_name: 收缴情况
+   fee_name: 费用类型
+   building: 楼栋
+   num_for_house: 户数
+   num_for_chargeable_house: 收费户
+   arrears_history: 历史欠费
+   all_arrears: 总欠费
+   num_for_paid_house_today: 本日已交户数
+   cost_for_paid_today: 本日已交金额
+   num_for_notpaid_house_history: 历史欠费清缴户
+   cost_for_arrears_history: 历史欠费清缴金额
+   num_for_paid_house_month: 本月已收户数
+   num_for_last_house: 剩余户数
+   percentage_for_paid_house: 已收户占比
+   fees_for_received_month: 当月已收金额
+   fees_for_notreceived_month: 当月剩余未收
+   charge_rate: 收费率
+  module3:
+   module_name: 月实收明细
+   fee_name: 费用类型
+   building: 楼栋
+   start_time: 开始日期
+   end_time: 结束日期
+   house: 房屋
+   ow: 业主
+   final: 实收
+   name_fee: 费用名称
+   time_income: 实收时间段
+   cashier: 收银员
+   time_pay: 交费时间
+  module4:
+   module_name: 月欠费明细
+   fee_name: 费用类型
+   building: 楼栋
+   start_time: 开始日期
+   end_time: 结束日期
+   house: 房屋
+   ow: 业主
+   arrears_name: 费用名称
+   arrears_time: 欠费时间段
+   arrears_num: 欠费金额
+  cost:
+   allqianfei: 总欠费
+   allfinal: 总实收
+   final: 实收
+   wuye: 物业费
+   yajin: 押金
+   tingche: 停车费
+   meiqi: 煤气费
+   qunuan: 取暖
+   weixiu: 维修费
+   fuwu: 服务费
+   qita: 其他
+   shuifei: 水费
+   dianfei: 电费
+   zujin: 租金
+   gongtan: 公摊费
+   qianfei: 欠费
+  method:
+   cash: 现金
+   wechat: 微信二维码
+   zhifubao: 支付宝二维码
+   transfer: 转账
+   POS: POS刷卡
+   refund: 押金退款到账
+  house: 房屋
+  host: 业主
+  hostnum: 户数
+  costnum: 收费户数
+  community: 小区
+  begintime: 开始时间
+  endtime: 结束时间
+  phone: 手机号
+ get:
+  expense: 费用类统计
+  workOrder: 工单类统计
+  access: 出入类统计
+  other: 其他类统计
+ query-shishou: 
+  summary: 实收统计
+ query-shishou-detail: 
+  summary: 实收明细
+ query-method: 
+  summary: 收款方式统计
+ query-qianfei: 
+  summary: 欠费统计
+ optional: 可选查询条件
+ export:
+  summary: 导出
+  module1: 导出欠费明细
+  module2: 导出收缴情况
+  module3: 导出月实收明细
+  module4: 导出月欠费明细
+  summary2: 导出实收明细
+  summary1: 导出实收统计
+  summary3: 导出收款方式
+  summary4: 导出欠费统计
+ building: 栋
+test:
+ inf1: 楼栋收费率查询
+ inf2: 费用项收费率查询
+ manager: 物业费，管理费
+fee-summary:
+ buildingName: 楼栋名
+ startDate: 开始日期
+ endDate: 结束日期
+ paymentRate: 楼栋付费率
+ itemRate: 费用项收费率
+ buildRate: 楼栋收费率
+ ownerName: 业主名字
+ ownerPhone: 业主手机号
+ communityIds: 小区号
+ feeTypes: 费用类型
+ roomIds: 房间号
+ otalAmount: 应收总金额
+ paidAmount: 实收总金额
+ reportTime: 数据生成时间
+ curReceivableFee: 当前应收取费用
+ curReceivedFee: 当前已收取费用
+expedet:
+ get:
+  buildingSummery: 房屋明细查询
+  ownerSummery: 业主明细查询
+  contractSummery: 合同明细查询
+  carSummery: 车辆明细查询
+ export:
+  page1: 导出房屋费用明细
+  page2: 导出业主费用明细
+  page3: 导出合同费用明细
+  page4: 导出车辆费用明细
+ field:
+  query:
+   startTime: 开始时间
+   endTime: 结束时间
+   HourseID: 房屋编号
+   ContractName: 合同名称
+   ProprietorName: 业主姓名
+   PlateNumber: 车牌号
+   PhoneNumber: 手机号
+  module1:
+   house: 房屋
+   ow: 业主
+   shishou: 实收
+   qianfei: 欠费
+   wuye: 物业费
+   yajin: 押金
+   tingche: 停车费
+   meiqi: 煤气费
+   qunuan: 取暖
+   weixiu: 维修费
+   fuwu: 服务费
+   qita: 其他
+   shuifei: 水费
+   dianfei: 电费
+   zujin: 租金
+   gongtan: 公摊费
+   hetong: 合同
+   car: 车辆
+  module3:
+   module_name: 月实收明细
+   fee_name: 费用类型
+   building: 楼栋
+   start_time: 开始日期
+   end_time: 结束日期
+   house: 房屋
+   ow: 业主
+   final: 实收
+   name_fee: 费用名称
+   time_income: 实收时间段
+   cashier: 收银员
+   time_pay: 交费时间
+  module4:
+   module_name: 月欠费明细
+   fee_name: 费用类型
+   building: 楼栋
+   start_time: 开始日期
+   end_time: 结束日期
+   house: 房屋
+   ow: 业主
+   arrears_name: 费用名称
+   arrears_time: 欠费时间段
+   arrears_num: 欠费金额
+
+oerpaydet-catalog:
+ get: 
+  summary: 获取业主缴费明细列表（条件+分页） 
+ field:
+  feeCategory: 项目大类
+  feeItem: 收费项目
+  roomNumber: 房屋编号
+  ownerName: 业主名称
+  year: 年份
+oerpaydet-export:
+ export:
+  summary: 导出业主缴费明细
+ field:
+  feeItem: 收费项目
+  roomNumber: 房屋编号
+  ownerName: 业主名称
+  total: 合计
+  receivable: 应收
+  prepaid: 预收
+  month1: 1月
+  month2: 2月
+  month3: 3月
+  month4: 4月
+  month5: 5月
+  month6: 6月
+  month7: 7月
+  month8: 8月
+  month9: 9月
+  month10: 10月
+  month11: 11月
+  month12: 12月
+
+expesum:
+ searchsum: 查询费用汇总表
+ timebegin: 开始时间
+ timeend: 结束时间
+ ownerName: 业主名字
+ buildNumber: 房屋编号
+ ownerPhone: 业主手机号
+ export: 导出费用汇总表
+ totalRoomCount: 总户数
+ feeRoomCount: 收费户数
+ oweRoomCount: 欠费户数
+ hisOweFee: 历史欠费
+ curOweFee: 当前欠费
+ curReceivableFee: 当前应收
+ curReceivedFee: 当前实收
+ hisReceivedFee: 历史实收
+ preReceivedFee: 预收款
+ communityId: 小区ID
+ roomNum: 房间号
+ feeTypeCd: 费用类型
+ feeName: 费用名称
+ ownerTel: 业主电话
+ endTime: 结束时间
+ curMonthTimeBegin: 当前月份起
+ curMonthTimeEnd: 当前月份止
+ payFeeTimeBegin: 收费时间起
+ payFeeTimeEnd: 收费时间止
+
+
+common:
+ pageIndex: 当前页码，从1开始
+ pageSize: 每页记录数
+ totalPages: 总页数
+ totalRecords: 总记录数
+
+paydet:
+ list1: 获取缴费明细列表（条件+分页）
+ list2: 导出缴费明细
+ paymentStartTime: 选择缴费开始时间
+ paymentEndTime: 选择缴费结束时间
+ houseOrPlateNumber: 房屋编号或者车牌号
+ chargeItem: 选择收费项
+ chargeStartTime: 选择收费开始时间
+ chargeEndTime: 选择收费结束时间
+ export: 导出缴费明细
+ orderNumber: 订单号
+ houseNumberPropertyOwner: 房号 / 业主
+ expenseTypeItem: 费用类型 > 费用项
+ paymentPeriod : 缴费时间段
+ paymentTime: 缴费时间
+ cashier: 收银员
+ dueReceiveAmount: 应缴 / 应收金额(元)
+ amountReceived: 实收金额(元)
+ accountDeduction: 账户抵扣(元)
+ discountWaiverAmount: 优惠/减免金额(元)
+ giftAmount: 赠送金额(元)
+ latePaymentFee: 滞纳金(元)
+ area: 面积(平方米)
+ parkingSpace: 车位
+ remarks: 说明
+ 
+ payMethod:
+  paymentMethod: 选择支付方式
+  method: 支付方式
+  cash: 现金
+  POS: POS刷卡
+  wechat: 微信二维码
+  zhifubao: 支付宝二维码
+  transfer: 转账
+  paymentWeChatOfficial: 微信公众号支付
+  paymentWeChatMiniProgram: 微信小程序支付
+ feeSituation: 
+  expenseStatus: 选择费用状态
+  situation: 支付状态
+  refunding: 退费中
+  refunded: 已退费
+  refundFailed: 退费失败
+  refundForm: 退费单
+  normal: 正常
+  arrears: 欠费
+ expenseType:
+  type: 选择费用类型
+  expenseStatus: 费用状态
+  propertyFee: 物业费
+  deposit: 押金
+  parkingFee: 停车费
+  gasFee: 煤气费
+  heatingFee: 取暖费
+  repairFee: 维修费
+  serviceFee: 服务费
+  other: 其他
+  waterFee: 水费
+  electricityFee: 电费
+  commonFee: 公摊费
+  systemFee: 系统费用
+  rent: 租金

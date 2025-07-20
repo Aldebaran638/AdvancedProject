@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zeroone.star.communitymanage.mapper.building.BuildingOwnerRoomRelMapper">
+<!--BuildingOwnerRoomRelDTO getByRoomId(String roomId);-->
+    <select id="getByRoomId" resultType="com.zeroone.star.project.dto.j5.community.building.BuildingOwnerRoomRelDTO">
+        SELECT
+            owner_id AS ownerId
+        FROM
+            building_owner_room_rel
+        WHERE
+            room_id = #{roomId}
+        AND
+            status_cd = '0'
+        LIMIT 1
+    </select>
+
+</mapper>

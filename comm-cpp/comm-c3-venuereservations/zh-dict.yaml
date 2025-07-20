@@ -1,0 +1,23 @@
+﻿VenueReservationMgr:
+    get:
+        summary: 获取场馆场地预约列表
+    add:
+        summary: 添加预约
+    field:
+        spaceId: 场地ID
+        venueId: 场馆ID
+        personName: 预约人
+        personTel: 预约电话
+        appointmentDate: 预约日期
+        appointmentTime: 预约时间
+        receivableAmount: 应收金额
+        receivedAmount: 实收金额
+        payWay: 支付方式
+        reservationStatus: 状态
+        remark: 备注
+        orderId: 订单编号
+        createTime: 创建时间
+        venueName: 场馆名称
+        spaceName: 场地名称
+        
+        

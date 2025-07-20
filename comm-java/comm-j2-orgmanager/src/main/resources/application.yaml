@@ -1,0 +1,5 @@
+server:
+  port: ${sp.j2orgmanager}
+spring:
+  application:
+    name: ${sn.j2orgmanager}

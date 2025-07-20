@@ -1,0 +1,12 @@
+server:
+  port: ${sp.housemanagement}
+spring:
+  application:
+    name: ${sn.housemanagement}
+
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: ASSIGN_ID # 全局使用雪花算法
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 可选：显示SQL日志

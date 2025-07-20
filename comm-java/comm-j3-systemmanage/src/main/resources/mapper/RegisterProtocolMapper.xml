@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zeroone.star.systemmanage.mapper.RegisterProtocolMapper">
+    <update id="updateRegisterProtocol" parameterType="com.zeroone.star.systemmanage.entity.RegisterProtocolDO">
+        update register_protocol t set t.status_cd = #{statusCd}
+        <if test="merchantProtocol !=null and merchantProtocol != ''">
+            , t.merchant_protocol= #{merchantProtocol}
+        </if>
+        <if test="userProtocol !=null and userProtocol != ''">
+            , t.user_protocol= #{userProtocol}
+        </if>
+        where 1=1
+        <if test="protolcolId !=null and protolcolId != ''">
+            and t.protolcol_id= #{protolcolId}
+        </if>
+    </update>
+</mapper>

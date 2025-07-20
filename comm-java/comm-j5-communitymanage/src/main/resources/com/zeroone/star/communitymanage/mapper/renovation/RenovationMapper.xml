@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zeroone.star.communitymanage.mapper.renovation.RenovationMapper">
+
+    <update id="updateByRId">
+        update room_renovation set state = 5000 where r_id = #{rId}
+    </update>
+    <update id="updateStatus">
+        UPDATE room_renovation
+        <set>
+            state = #{state},
+            <if test="examineRemark != null and examineRemark != ''">
+                examine_remark = #{examineRemark}
+            </if>
+        </set>
+        WHERE r_id = #{rId}
+    </update>
+    <update id="updateRenoById">
+        UPDATE room_renovation
+        <set>
+            <if test="roomId != null">room_id = #{roomId},</if>
+            <if test="roomName != null">room_name = #{roomName},</if>
+            <if test="communityId != null">community_id = #{communityId},</if>
+            <if test="startTime != null">start_time = #{startTime},</if>
+            <if test="endTime != null">end_time = #{endTime},</if>
+            <if test="personName != null">person_name = #{personName},</if>
+            <if test="personTel != null">person_tel = #{personTel},</if>
+            <if test="statusCd != null">status_cd = #{statusCd},</if>
+            <if test="state != null">state = #{state},</if>
+            <if test="isViolation != null">is_violation = #{isViolation},</if>
+            <if test="violationDesc != null">violation_desc = #{violationDesc},</if>
+            <if test="remark != null">remark = #{remark},</if>
+            <if test="examineRemark != null">examineRemark = #{examineRemark},</if>
+            <if test="isPostpone != null">is_postpone = #{isPostpone},</if>
+            <if test="postponeTime != null">postpone_time = #{postponeTime},</if>
+            <if test="renovationCompany != null">renovation_company = #{renovationCompany},</if>
+            <if test="personMain != null">person_main = #{personMain},</if>
+            <if test="personMainTel != null">person_main_tel = #{personMainTel}</if>
+        </set>
+        WHERE r_id = #{rId}
+    </update>
+</mapper>

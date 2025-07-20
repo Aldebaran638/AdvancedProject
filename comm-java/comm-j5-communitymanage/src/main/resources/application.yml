@@ -1,0 +1,20 @@
+server:
+  port: ${sp.communitymanage}
+spring:
+  application:
+    name: ${sn.communitymanage}
+
+#mybatis-plus:
+#  #mapper配置文件
+#  mapper-locations: classpath*:/mycommunity/mapper/**/*.xml
+#  type-aliases-package: com.zeroone.star.mycommunity.entity
+#  configuration:
+#    #开启驼峰命名
+#    map-underscore-to-camel-case: true
+#  global-config:
+#    db-config:
+#      id-type: assign_id #id为雪花算法生成
+#      update-strategy: not_null #更细策略，只更新非空字段
+#logging:
+#  level:
+#    com.zeroone.star.mycommunity.mapper: DEBUG

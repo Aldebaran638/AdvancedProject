@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zeroone.star.orgmanager.mapper.SchedulingTableMapper">
+    <sql id="dateFormats">
+        CONCAT(
+            YEAR(CURRENT_DATE()), '-',
+            LPAD(MONTH(CURRENT_DATE()), 2, '0'), '-',
+            LPAD(scd.day, 2, '0')
+        ) AS fullDate,
+        DATE_FORMAT(CURRENT_DATE(), '%Y-%m') AS scheduleMonth,
+        CONCAT(LPAD(scd.day, 2, '0'), '日') AS scheduleDate
+    </sql>
+
+    <resultMap id="ScheduleResultMap" type="com.zeroone.star.project.vo.j4.orgmanager.PersonnelSchedulingVO">
+        <result column="staff_id" property="staffId" />
+        <result column="staff_name" property="staffName" />
+        <result column="fullDate" property="attendanceDateStr" jdbcType="VARCHAR" />
+        <result column="scheduleMonth" property="scheduleMonth" />
+        <result column="scheduleDate" property="scheduleDate" />
+        <result column="shift_name" property="classesName" />
+        <result column="work_time" property="scheduleTime" />
+        <result column="workday_type" property="workdayType" />
+    </resultMap>
+
+    <select id="selectAttendanceSchedule" resultMap="ScheduleResultMap">
+        SELECT
+        scs.staff_id AS staffId,
+        scs.staff_name AS staffName,
+        <include refid="dateFormats" />,
+        sc.name AS shift_name,
+        CONCAT(sc.name, ' ', sct.start_time, '-', sct.end_time) AS work_time,
+        CASE
+        WHEN scd.workday = '2002' THEN '休息日'
+        ELSE '工作日'
+        END AS workday_type
+        FROM
+        schedule_classes sc
+        JOIN schedule_classes_staff scs ON sc.schedule_id = scs.schedule_id
+        INNER JOIN schedule_classes_day scd ON sc.schedule_id = scd.schedule_id
+        INNER JOIN schedule_classes_time sct ON scd.day_id = sct.day_id
+        WHERE
+        sc.state = '1001'
+        <if test="query.name != null and query.name != ''">
+            AND scs.staff_name LIKE CONCAT('%', #{query.name}, '%')
+        </if>
+        <if test="query.shiftName != null and query.shiftName != ''">
+            AND sc.name LIKE CONCAT('%', #{query.shiftName}, '%')
+        </if>
+        ORDER BY
+        scs.staff_name ASC,
+        scd.day ASC
+    </select>
+</mapper>

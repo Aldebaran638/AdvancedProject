@@ -1,0 +1,8 @@
+server:
+  port: ${sp.auth}
+spring:
+  application:
+    name: ${sn.auth}
+  main:
+    # 允许bean定义覆盖，支持自定义PasswordEncoder
+    allow-bean-definition-overriding: true

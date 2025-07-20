@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zeroone.star.communitymanage.mapper.building.BuildingUnitMapper">
+
+    <select id="getUnitInfoByUnitId" resultType="com.zeroone.star.project.dto.j5.community.building.BuildingUnitDTO">
+        SELECT
+            unit_id as unitId,
+            floor_id as floorId,
+            unit_num as unitNum
+        FROM building_unit
+        WHERE unit_id = #{unitId}
+    </select>
+
+    <select id="getUnitInfoByFloorId" resultType="com.zeroone.star.project.dto.j5.community.building.BuildingUnitDTO">
+         SELECT
+            unit_id as unitId,
+            floor_id as floorId,
+            unit_num as unitNum
+        FROM building_unit
+        WHERE floor_id = #{floorId} AND status_cd = '0'
+        ORDER BY unit_num ASC
+    </select>
+</mapper>

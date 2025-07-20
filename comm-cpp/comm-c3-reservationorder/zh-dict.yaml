@@ -1,0 +1,35 @@
+﻿venue-reservation:
+ query-order:
+  summary: 获取预约订单列表（条件+分页）
+ remove-order:
+  summary: 取消预约
+ field:
+  communityId: 社区id
+  spaceId: 场地id
+  state: 场馆场地预约订单状态：S为预约成功 F为预约失败 W为待审核 F为待支付 CL为已取消
+  personName: 预约人名字
+  personTel: 预约人电话
+  appointmentTime: 预约日期
+  cspId: 订单编号
+  venueName: 场馆名
+  spaceName: 场地名
+  times: 预约时间段
+  receivableAmount: 应收金额
+  receivedAmount: 实收金额
+  payWay: 支付方式：1为现金 2为微信 3为支付宝
+  payWayName: 支付方式名称
+  stateName: 状态名称
+  createTime: 创建时间
+  remark: 备注
+ example:
+  personName: 张三
+ value:
+  payWayName:
+   1: 现金
+   2: 微信
+   3: 支付宝
+  stateName: 
+   S: 预约成功
+   F: 预约失败或待支付
+   W: 待审核
+   CL: 已取消

@@ -1,0 +1,71 @@
+owner:
+ selectlist:
+  summary: 选择业主列表
+ post:
+  summary: 添加业主
+ put:
+  summary: 修改业主
+ delete:
+  summary: 删除业主
+ field:
+  member_id: 业主成员ID(必填)
+  owner_id: 业主ID(必填)
+  b_id: 业务ID(必填)
+  name: 业主名称(必填)
+  age: 年龄(可选)
+  link: 联系人手机号（必填）
+  user_id: 用户ID(必填)
+  create_time: 创建时间(默认当前时间)
+  status_cd: 数据状态(默认0,可用)
+  owner_type_cd: 业主类型(默认1001,本人)
+  community_id: 小区ID(可选)
+  id_card: 身份证号码(默认"-1")
+  state: 业主成员状态(默认2000,审核完成)
+  owner_flag: 业主标识(默认1,真实业主)
+  sex: 性别(必填)
+  address: 家庭住址(可选)
+  accessKey: 门禁钥匙
+  remark: 备注
+  room_num: 房屋编号
+  page: 页号
+  page_size: 序号
+
+OwnerInfo:
+ post:
+  summary: 入住房屋
+ delete:
+  summary: 退出房屋
+ field:
+  room_num: 房屋编号
+  layer: 楼层
+  room_id: 房屋id
+  built_up_area: 建筑面积
+  apartment: 户型
+  section: 房间数
+PrintInfo:
+ example:
+  acct_name: 蔡徐坤
+  owner_name: 蔡徐坤
+  acct_type: 现金账户
+  prime_rate: 微信二维码
+ export:
+  Slip: 
+   summary: 打印预存小票
+  Rpt:
+   summary: 打印预存收据
+ field:
+  ar_id: 收据id
+  acct_id: 账户id
+  community_id: 账户名称
+  acct_type: 账户类型
+  owner_name: 业主
+  receivable_amount: 预存金额
+  prime_rate: 预存方式
+  received_amount: 预存金额
+  remark: 备注
+  amount: 总计
+  page_name:  开票人 
+  name: 小区名称
+  owner_id: 业主id
+  link: 联系方式
+  create_time: 预存时间

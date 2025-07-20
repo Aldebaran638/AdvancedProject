@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zeroone.star.configmanager.mapper.TDictMapper">
+    <select id="selectWithSpecName" resultType="com.zeroone.star.project.dto.j2.configmanager.sys.dictionary.TDictDTO">
+        SELECT
+        <if test="spec_id != null and spec_id != ''">
+            s.spec_name,
+        </if>
+        d.status_cd, d.name, d.description
+        FROM t_dict d
+        INNER JOIN t_dict_spec s
+        <if test="spec_id != null and spec_id != ''">
+            ON d.table_name = s.table_name AND d.table_columns = s.table_columns
+        </if>
+        <where>
+            <if test="spec_id != null and spec_id != ''">
+                EXISTS (
+                SELECT 1
+                FROM t_dict_spec s
+                WHERE s.spec_id = #{spec_id}
+                AND d.table_name = s.table_name
+                AND d.table_columns = s.table_columns
+                )
+            </if>
+            <if test="name != null and name != ''">
+                AND d.name LIKE CONCAT('%', #{name}, '%')
+            </if>
+            <if test="status_cd != null and status_cd != ''">
+                AND d.status_cd LIKE CONCAT('%', #{status_cd}, '%')
+            </if>
+        </where>
+    </select>
+    <select id="selectWithSpecId"
+            resultType="com.zeroone.star.project.dto.j2.configmanager.sys.dictionary.AddTDictResDTO">
+        SELECT
+        s.spec_name,
+        d.status_cd, d.name, d.description
+        FROM t_dict d
+        INNER JOIN t_dict_spec s
+        ON d.table_name = s.table_name AND d.table_columns = s.table_columns
+        <where>
+            <if test="spec_id != null and spec_id != ''">
+                EXISTS (
+                SELECT 1
+                FROM t_dict_spec s
+                WHERE s.spec_id = #{spec_id}
+                AND d.table_name = s.table_name
+                AND d.table_columns = s.table_columns
+                )
+            </if>
+            <if test="name != null and name != ''">
+                AND d.name LIKE CONCAT('%', #{name}, '%')
+            </if>
+            <if test="status_cd != null and status_cd != ''">
+                AND d.status_cd LIKE CONCAT('%', #{status_cd}, '%')
+            </if>
+        </where>
+    </select>
+    <select id="selectMaxId" resultType="java.lang.Integer">
+        select max(id) from t_dict
+    </select>
+</mapper>

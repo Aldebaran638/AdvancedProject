@@ -1,0 +1,5 @@
+server:
+  port: ${sp.menumana}
+spring:
+  application:
+    name: ${sn.menumana}

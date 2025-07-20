@@ -1,0 +1,390 @@
+axing:
+  delete: 删除催缴
+  summary: 获取费用汇总列表(条件+分页)
+  payremind: 导出催缴
+  download:
+    summary: 催缴报表名
+  ofc_id: 编号
+  owner_name: 业主名称
+  payer_obj_name: 付费对象
+  fee_name: 费用名称
+  amountd_owed: 催缴金额
+  callable_way: 缴费方式
+  start_time: 欠费时间段
+  staff_name: 催缴人
+  state: 状态
+  create_time: 创建时间
+  remark: 说明
+  summ:
+     create_time: 时间(年2025/月2025-03/日2025-05-20)
+     obj_id: 费用项ID
+     obj_name: 费用项名称
+     receivable_amount: 应收金额(单位:元)
+     amount: 实收金额(单位:元)
+     DTOList: 费用汇总列表
+     total: 总数
+     receipt_id: 收据ID
+RefundAndAudit:
+ field:
+  fee_id: 缴费id
+  reason: 退费原因
+  record_ids: 批量审核id
+  state: 状态
+  msg: 审核原因
+  audit_id: 审核id
+  message: 审核原因
+  apply: 申请退费
+  batch: 批量审核
+  fee: 审核费用
+  
+
+discount-type:
+ get:
+  summary: 获取优惠类型名称列表
+  page: 获取优惠类型列表（条件 + 分页）
+ post:
+  summary: 添加优惠类型
+ update:
+  summary: 修改优惠类型
+ delete:
+  summary: 删除优惠类型
+ field:
+  type_name: 类型名称
+  type_desc: 类型描述
+  type_id: 类型id
+  type_comm_id: 小区id
+  creat_time: 创建时间
+  status: 数据状态   
+type:
+ update:
+  summary: 修改优惠类型
+ delete:
+  summary: 删除优惠类型
+ field:
+  type_name: 类型名称
+  type_desc: 类型描述
+  type_id: 类型id
+  type_comm_id: 小区id
+  creat_time: 创建时间
+  status: 数据状态
+
+
+supplementrecepit:
+ filed:
+  select: 查询补打凭据列表(条件+分页)
+  recepitid: 收据id
+  feetype: 收费类型
+  feetypedetail: 3333 房屋费/6666 车位费
+  message: 车位或房屋信息
+  objtype: 费用类型
+  feename: 费用项
+  roomname: 房屋
+  ownername: 业主
+  carpark: 车位
+  receviableamount: 总金额
+  starttime: 开始时间
+  createtime: 创建时间
+  endtime: 截止时间
+  needpay: 应收金额
+  pay: 实收金额
+  recepitPayId: 支付订单id
+  objname: 对象名称
+  recepitcode: 收据编号
+  squareprice: 单价/固定费
+  area: 面积
+  primerate: 支付方式
+  payableamount: 应缴金额
+  discountamount: 优惠金额
+  remark: 备注
+ export:
+  reprint: 打印收据  
+  reprint2: 打印小票
+ objtype:
+  room: 房屋费
+  car: 车位费
+ roommessage:
+  unit: 单元
+  room: 室
+ reprint:
+  objname: 收费项目
+  message: 摘要
+  latefee: 滞纳金
+  amount: 金额
+  zhi: 至
+  odd: 单号
+ number:
+  zero: 零
+  one: 壹
+  two: 贰
+  three: 叁
+  four: 肆
+  five: 伍
+  six: 陆
+  seven: 柒
+  eight: 捌
+  nine: 玖
+  yuan: 元
+  shi: 拾
+  bai: 佰
+  qian: 仟
+  wan: 万
+  yi: 亿
+  fen: 分
+  jiao: 角
+ regex:
+  zeroqian: 零仟
+  zerobai: 零佰
+  zeroshi: 零拾
+  zeroyi: 零亿
+  zerowan: 零万
+  zeroyuan: 零元
+  zerojiao: 零角
+  zerofen: 零分
+  doublezero: 零零
+  threezero: 零零零
+  yiwan: 亿万
+ reprint2: 
+  title: 缴费收据单
+  line1: 收据号：
+  line2: 订单号：
+  line3: 房号：
+  line4: 业主：
+  line5: 时间：
+  line6: 收费项目：
+  line7: 收费范围：
+  line8: 单价/固定费：
+  line9: 面积/用量：
+  line10: 支付方式：
+  line11: 金额： 
+  line12: 优惠金额：
+  line13: 备注：
+  line14: 总计：
+  line15: 开票人：
+  func1: 现金
+  func2: POS刷卡
+  func3: 微信二维码
+  func4: 支付宝二维码
+  func5: 转账
+
+
+paymentaudit:
+ list: 
+  summary: 获取缴费审核列表
+ detail: 
+  summary: 获取缴费审核详情
+ lhistory: 
+  summary: 获取缴费历史列表
+ field:
+  payer_obj_type: 付费对象类型
+  value: 房屋
+  obj_name: 房屋
+  fee_name: 费用项目
+  cycles: 付费周期
+  start_time: 缴费起始时间 
+  end_time:  缴费结束时间
+  receivable_amount: 应付金额(单位:元)
+  received_amount: 实付金额(单位:元)
+  cashier_name: 操作员工
+  create_time: 缴费时间
+  state: 审核状态
+  message: 审核说明
+  remark: 缴费备注
+  fee_id: 费用id
+  fee_flag: 费用标识
+  fee_type_cd: 费用类型
+  payer_obj_name: 付费对象
+  fee_state: 费用状态
+  create_timea: 建账时间
+  batch_id: 批次
+  area: 面积
+  square_price: 单价
+  fee_addition: 附加费
+  fee_detail_id: 缴费id
+  prime_rate: 缴费方式
+  status_cd: 状态
+  fee_id_a: 费用ID(非用户输入，系统自动输入)
+
+blue:
+ refundauditlist:
+  title: 获取退费审核列表
+  id: 缴费单号
+  range: 费用类型
+  status: 审核状态
+  return_fee_id: 退款单号
+  detail_id: 缴费单号
+  fee_type_cd: 费用类型
+  cycles: 付费周期
+  create_time: 申请时间
+  reason: 退费原因
+  state: 审核状态
+  detail: 获取退费审核详情
+  label: 费用标识
+  fee_state: 费用状态
+  item: 费用项
+  object: 费用对象
+  history: 获取退费历史列表
+  begin: 开始时间
+  end: 结束时间
+  submit: 缴费方式
+  submittime: 缴费时间
+  beginsubmittime: 缴费起始时间
+  applicant: 申请人
+  Reviewers: 审核人
+  Housenumber: 房屋编号
+  Applicationstarttime: 申请开始时间
+  Applicatioendtime: 申请结束时间
+  Expense_object: 费用对象
+  Amount_Due: 应付金额
+  Refund_status: 退款情况
+  operatedd: 操作
+  beginsubmittime: 缴费起始时间
+owe:
+  b_type: 房屋类型
+  owner_name: 业主名称
+  payer_obj_type: 付费对象
+  type: 住宅
+  name: 演示业主
+  ob: 房屋
+  fe: 水费
+  fee: 费用项
+  lou: 101楼栋
+  uu: 1单元
+  rr: 101-1房间
+  owe_id: 编号
+  payer_obj_name: 收费对象
+  owner_id: 业主名称
+  owner_tel: 手机号
+  create_time: 开始时间
+  deadline_time: 结束时间
+  bill_amount_owed: 合计
+  fee_end_time: 更新时间
+  DTOList: 欠费列表
+  total: 总数
+  building: 楼栋
+  unit: 单元
+  home: 房屋编号
+  get:
+    summary3: 获取欠费列表(条件+分页)
+  download:
+    summary1: 导出欠费列表
+    summary2: 欠费报表
+    info1: 欠费编号
+    info2: 收费对象
+    info3: 业主编号
+    info4: 手机号
+    info5: 开始时间
+    info6: 结束时间
+    info7: 合计
+    info8: 更新时间
+  
+refund:
+  field:
+  state: 审核状态
+  reason: 审核原因
+  id: 退费id
+  put:
+    summary: 审核退费
+  download:
+    summary1: 导出退费审核
+    summary2: 退费审核报表
+  return_fee_id: 退款单号
+  b_id: 缴费单号
+  fee_type_cd: 费用类型
+  fee_id: 付费对象
+  cycles: 付费周期
+  received_amount: 应付金额/实付金额
+  create_time: 申请时间
+  reasons: 退费原因
+  apply_person_name: 申请人
+  states: 审核状态
+  audit_person_name: 审核人
+  status_cd: 退款情况
+
+
+cancellationfee:
+ get:
+  summary: 获取取消费用列表（条件+分页）
+ post:
+  apply: 申请取消
+  apply_state: 待审核
+  audit: 审核取消
+  audit_approve: 同意
+  audit_refuse: 拒绝
+ put:
+  summary: 修改一条示例数据
+ state:
+  2006001: 正常
+  2007001: 申请取消
+  2008001: 审核通过
+  2009001: 审核失败
+ field:
+  batchId: 批次号
+  communityId: 小区id
+  createUserId: 创建人id
+  createUserName: 创建员工
+  createTime: 时间
+  statusCd: 数据状态
+  state: 审核状态
+  msg: 取消原因
+  remark: 审核意见
+
+payremind:
+ get:
+  summary: 分页查询催缴数据
+ post1:
+  summary: 催缴登记
+ post2:
+  summary: 新增催缴
+ field:
+  owner_name: 业主名称
+  staff_name: 处理人
+  payer_obj_name: 付费对象名称
+  remark: 说明
+  ofc_id: id
+  community_id: 小区分片字段
+  owner_id: 业主id
+  payer_obj_id: 付费对象id
+  payer_obj_type: 付费类型
+  config_id: 收费项目id
+  fee_id: 费用id
+  fee_name: 费用名称
+  amountd_owed: 催缴金额
+  callable_way: 催缴方式： WECHAT 微信 SMS 短信 PRINT 上门催缴
+  staff_id: 催缴人
+  state: 状态 W 带催缴 C 催缴完成 F催缴失败 D 催缴中
+  start_time: 费用结束时间，当时跑账单时的费用结束时间
+  end_time: 截止时间
+  create_time: 创建时间
+  status_cd: 数据状态，详细参考c_status表，S 保存，0, 在用 1失效
+
+
+Bupayremind:
+  get:
+    summary: 获取催缴列表(条件+分页)
+  post1:
+    summary: 催缴登记
+  post2:
+    summary: 新增催缴
+  field:
+    ofc_id: 编号
+    community_id: 社区编号
+    owner_name: 业主名称
+    owner_id: 业主编号
+    payer_obj_name: 付费对象
+    payer_obj_id: 付费对象编号
+    config_id: 费用配置编号
+    fee_id: 费用项编号
+    fee_name: 费用名称
+    payer_obj_type: 付费对象类型
+    amountd_owed: 催缴金额
+    start_time: 欠费时间段
+    end_time: 欠费结束时间
+    callable_way: 催缴方式
+    staff_id: 催缴人编号
+    staff_name: 催缴人
+    state: 状态
+    remark: 说明
+    create_time: 创建时间
+    status_cd: 状态码
+    DTOList: 催缴列表
+    total: 催缴总数

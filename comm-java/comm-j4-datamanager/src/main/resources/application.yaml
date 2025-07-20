@@ -1,0 +1,14 @@
+server:
+  port: ${sp.datamanager}
+spring:
+  application:
+    name: ${sn.datamanager}
+
+
+mybatis:
+  type-handlers-package: com.zeroone.star.datamanager.handler
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+logging:
+  level:
+    com.zeroone.star.mapper: DEBUG

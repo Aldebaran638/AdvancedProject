@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zeroone.star.patrolmgt.mapper.RoutePointRelMapper">
+    <update id="modifyRoutePoint" parameterType="com.zeroone.star.project.j8.patrolmgt.route.dto.routepointrel.RoutePointRelModifyImagesDTO">
+        update inspection_route_point_rel
+        set point_start_time = #{pointStartTime},point_end_time = #{pointEndTime},sort_number = #{sortNumber}
+        where inspection_route_id = #{inspectionRouteId} and inspection_id =#{inspectionId}
+    </update>
+    <select id="selectRoutePoint" resultType="com.zeroone.star.patrolmgt.entity.yuxixia_DO" parameterType="com.zeroone.star.project.j8.patrolmgt.route.dto.routepointrel.AddRoutePointRelListDTO">
+        select inspection_route_id,inspection_id
+        from inspection_route_point_rel
+        where inspection_route_id = #{inspectionRouteId} and inspection_id = #{inspectionId}
+    </select>
+    <select id="selectRemoveRoutePoint" resultType="com.zeroone.star.patrolmgt.entity.yuxixia_DO" parameterType="com.zeroone.star.project.j8.patrolmgt.route.dto.routepointrel.RemoveRoutePointDTO">
+        select inspection_route_id,inspection_id ,irp_rel_id
+        from inspection_route_point_rel
+        where inspection_route_id = #{inspectionRouteId} and inspection_id = #{inspectionId}
+
+    </select>
+
+    <insert id="insertByRoutePointId" parameterType="com.zeroone.star.project.j8.patrolmgt.route.dto.routepointrel.AddRoutePointRelListDTO">
+        INSERT INTO inspection_route_point_rel (irp_rel_id,
+                                                b_id,
+                                                inspection_route_id,
+                                                inspection_id,
+                                                community_id,
+                                                create_time, status_cd,
+                                                point_start_time,
+                                                point_end_time,
+                                                sort_number)
+        VALUES (#{irpRelId},
+                #{bId},
+                #{inspectionRouteId},
+                #{inspectionId},
+                #{communityId},
+                #{createTime},
+                #{statusCd},
+                #{pointStartTime}, #{pointEndTime}, #{sortNumber})
+    </insert>
+</mapper>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zeroone.star.orgmanager.mapper.ScheduleClassesDayMapper">
+    <insert id="insertScheduleClassesDay">
+        insert into schedule_classes_day(day_id, schedule_id, week_flag, day, workday, create_time, status_cd)
+        VALUES (#{dayId},#{scheduleId},#{weekFlag},#{day},#{workday},#{createTime},#{statusCd})
+    </insert>
+    <delete id="deleteByScheduleId">
+        delete from schedule_classes_day where schedule_id=#{dId};
+    </delete>
+</mapper>

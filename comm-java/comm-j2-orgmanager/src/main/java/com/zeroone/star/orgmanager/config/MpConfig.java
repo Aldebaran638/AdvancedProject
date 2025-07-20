@@ -1,0 +1,38 @@
+package com.zeroone.star.orgmanager.config;
+
+import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
+import org.apache.ibatis.reflection.MetaObject;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
+import java.time.LocalDateTime;
+
+/**
+ * <p>
+ * 描述：注入MyBaits Plus插件与配置
+ * </p>
+ * <p>版权：&copy;01星球</p>
+ * <p>地址：01星球总部</p>
+ * @author hubery
+ */
+@Configuration
+@ComponentScan("com.zeroone.star.project.config.mybatis")
+public class MpConfig {
+    @Bean
+    public MetaObjectHandler metaObjectHandler() {
+        return new MetaObjectHandler() {
+            @Override
+            public void insertFill(MetaObject metaObject) {
+                // 插入时填充
+                this.strictInsertFill(metaObject, "create_time", LocalDateTime.class, LocalDateTime.now());
+            }
+
+            @Override
+            public void updateFill(MetaObject metaObject) {
+                // 更新时填充
+                this.strictUpdateFill(metaObject, "updateTime", LocalDateTime.class, LocalDateTime.now());
+            }
+        };
+    }
+}

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zeroone.star.propertymanage.mapper.InvoiceTitleMapper">
+    <insert id="insertInvoiceTitle">
+        INSERT INTO owner_invoice
+        (oi_id, owner_id, owner_name, invoice_type, community_id,
+         invoice_name, invoice_num, invoice_address, remark,
+         create_time, status_cd)
+        VALUES
+            (#{oiId}, #{ownerId}, #{ownerName}, #{invoiceType}, #{communityId},
+             #{invoiceName}, #{invoiceNum}, #{invoiceAddress}, #{remark},
+             #{createTime}, #{statusCd})
+    </insert>
+    <update id="updateInvoiceTitle">
+        UPDATE owner_invoice
+        <set>
+            <if test="invoiceAddress != null">invoice_address = #{invoiceAddress},</if>
+            <if test="invoiceName != null">invoice_name = #{invoiceName},</if>
+            <if test="invoiceNum != null">invoice_num = #{invoiceNum},</if>
+            <if test="invoiceType != null">invoice_type = #{invoiceType},</if>
+            <if test="ownerId != null">owner_id = #{ownerId},</if>
+            <if test="ownerName != null">owner_name = #{ownerName},</if>
+            <if test="remark != null">remark = #{remark},</if>
+            <trim suffixOverrides=","></trim>
+        </set>
+        WHERE oi_id = #{oiId}
+    </update>
+
+    <delete id="deleteInvoiceTitle" >
+        delete from owner_invoice where oi_id = #{oiId}
+    </delete>
+    <select id="selectInvoiceTitle" resultType="com.zeroone.star.project.dto.j7.propertymanage.Invoicetitle.InvoicetitleDTO">
+      select oi_id,owner_id,owner_name,invoice_name,invoice_num,invoice_address,invoice_type,remark from
+           owner_invoice
+        <where>
+            <if test="invoiceName != null">
+                and invoice_name like concat('%',#{invoiceName},'%')
+            </if>
+            <if test="invoiceType != null">
+                and invoice_type = #{invoiceType}
+            </if>
+            <if test="ownerName != null">
+                and owner_name = #{ownerName}
+            </if>
+        </where>
+        order by create_time desc
+
+    </select>
+    <select id="selectBuildingOwner" resultType="com.zeroone.star.propertymanage.entity.InvoiceTitle">
+        select status_cd,community_id from building_owner where owner_id=#{ownerId}
+    </select>
+</mapper>

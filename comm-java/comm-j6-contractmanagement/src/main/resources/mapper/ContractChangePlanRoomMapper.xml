@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zeroone.star.contractmanagement.mapper.ContractChangePlanRoomMapper">
+
+    <insert id="insertBatchSomeColumn">
+        INSERT INTO contract_change_plan_room
+        (plan_id, room_id, room_name, building, floor, area, status_cd, create_time, operate)
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.planId}, #{item.roomId}, #{item.roomName}, #{item.building}, #{item.floor}, #{item.area}, #{item.statusCd}, #{item.createTime}, #{item.operate})
+        </foreach>
+    </insert>
+
+</mapper>

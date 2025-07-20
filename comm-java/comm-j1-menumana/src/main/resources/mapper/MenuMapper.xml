@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zeroone.star.menumana.mapper.MenuPriviliegeTree.MenuMapper">
+    <select id="getAllMenus" resultType="com.zeroone.star.menumana.entity.MenuTree">
+        select mg.g_id as menuGroupId,
+            mg.name as menuGroupName,
+            mg.seq as mgseq,
+            mu.m_id as menuId,
+            p.p_id as privilegeId,
+            p.name as privilegeName
+            from m_menu_group mg
+        Left join m_menu mu  on mg.g_id = mu.g_id
+        left join p_privilege  p on p.m_id=mu.m_id
+            where p.status_cd='0' and mu.status_cd='0'
+        order by mg.seq,mu.m_id,p.p_id
+
+    </select>
+</mapper>

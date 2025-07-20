@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zeroone.star.dashboard.mapper.BusinessCommunityInfoMapper">
+
+
+    <select id="selectAllCommunityIdByUserId" resultType="com.zeroone.star.dashboard.entity.BuildingOwner">
+        SELECT community_id FROM building_owner WHERE user_id = #{userId} GROUP BY community_id
+    </select>
+
+
+    <select id="selectAllUserIdByCommunityId" resultType="com.zeroone.star.dashboard.entity.BuildingOwner">
+        SELECT user_id FROM building_owner WHERE community_id = #{communityId} GROUP BY user_id
+    </select>
+
+    <!-- 已注册住户数量 -->
+    <select id="getRegisteredCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) AS registered_count
+        FROM building_owner
+        WHERE state = '2000' AND community_id = #{communityId};
+    </select>
+
+    <!-- 房屋数量-->
+    <select id="getBuildingRoomCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) AS building_room_count
+        FROM building_room
+        WHERE community_id = #{communityId};
+    </select>
+
+    <!-- 楼宇数量-->
+    <select id="getBuildingUnitCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) AS building_unit_count
+        FROM building_unit
+        WHERE user_id = #{userId};
+    </select>
+
+    <!-- 车辆数量-->
+    <select id="getOwnerCarCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) AS owner_car_count
+        FROM owner_car
+        WHERE community_id = #{communityId};
+    </select>
+
+    <!-- 车位数量-->
+    <select id="getParkingSpaceCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) AS parking_space_count
+        FROM parking_space
+        WHERE community_id = #{communityId};
+    </select>
+
+    <!-- 商铺数量-->
+    <select id="getSStoreCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) AS s_store_count
+        FROM s_store
+        WHERE user_id = #{userId};
+    </select>
+
+
+</mapper>

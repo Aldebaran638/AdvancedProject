@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zeroone.star.orgmanager.mapper.PPrivilegeRelMapper">
+
+    <insert id="InsertPrivilegeRel">
+        INSERT INTO p_privilege_rel (p_id, pg_id, status_cd)
+        SELECT DISTINCT pu.p_id, #{dto.pgId}, '0'
+        FROM p_privilege_user pu
+        WHERE pu.user_id IN
+        <foreach item="userId" collection="dto.userIds" open="(" separator="," close=")">
+            #{userId}
+        </foreach>
+    </insert>
+    <select id="selectByPgId" resultType="java.lang.String">
+        SELECT DISTINCT pu.pId
+        FROM p_privilege_user pu
+        WHERE pu.userId IN
+        <foreach item="userId" collection="userIds" open="(" separator="," close=")">
+            #{userId}
+        </foreach>
+    </select>
+</mapper>

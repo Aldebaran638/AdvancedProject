@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zeroone.star.communitymanage.mapper.parking.ParkingMapper">
+
+    <select id="selectpark" resultType="com.zeroone.star.project.vo.j5.community.parking.ParkingVO">
+        SELECT DISTINCT
+            oc.car_num AS carNum,
+            ps.num AS num,
+            pa.num AS areaNum,
+            br.room_num AS roomNum,
+            bo.name AS ownerName,
+            br.unit_id AS unitId,
+            bu.unit_num AS unitNum,
+            bf.floor_num AS floorNum
+        FROM owner_car oc
+                 JOIN parking_space ps ON oc.ps_id = ps.ps_id
+                 JOIN parking_area pa ON ps.pa_id = pa.pa_id
+                 JOIN building_owner_room_rel bor ON oc.owner_id = bor.owner_id
+                 JOIN building_room br ON bor.room_id = br.room_id
+                 JOIN building_owner bo ON oc.owner_id = bo.member_id
+                 JOIN building_unit bu ON br.unit_id = bu.unit_id
+                 JOIN business_floor bf ON bu.floor_id = bf.floor_id
+          WHERE oc.community_id = #{communityId}
+             AND br.unit_id = #{unitId};
+    </select>
+
+</mapper>

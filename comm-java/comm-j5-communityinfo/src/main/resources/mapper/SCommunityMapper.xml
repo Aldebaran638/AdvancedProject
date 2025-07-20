@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zeroone.star.communityinfo.mapper.CommunityInfoMapper">
+
+    <resultMap id="CommunityInfoVOMap" type="com.zeroone.star.project.vo.j5.info.communityinfo.CommunityInfoVO">
+        <!-- 映射 s_community 表字段 -->
+        <id column="community_id" property="communityId" jdbcType="VARCHAR"/>
+        <result column="name" property="communityName" jdbcType="VARCHAR"/>
+        <result column="city_code" property="cityCode" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="nearby_landmarks" property="nearbyLandmarks" jdbcType="VARCHAR"/>
+        <result column="address" property="address" jdbcType="VARCHAR"/>
+        <result column="pay_fee_month" property="payFeeMonth" jdbcType="BIGINT"/>
+        <result column="fee_price" property="feePrice" jdbcType="DECIMAL"/>
+        <result column="tel" property="tel" jdbcType="VARCHAR"/>
+        <result column="state" property="state" jdbcType="VARCHAR"/>
+
+        <!-- 映射 s_store 表的 name 字段为 propertyName -->
+        <result column="store_name" property="propertyName" jdbcType="VARCHAR"/>
+
+    </resultMap>
+
+    <select id="selectNotEnteredCommunityName"
+            resultType="com.zeroone.star.project.vo.j5.info.communityinfo.CommunityNameVO">
+        SELECT community_id, name
+        FROM s_community
+        WHERE status_cd = 0 AND community_id NOT IN (
+            SELECT community_id
+            FROM s_community_member
+            WHERE member_type_cd = 390001200002
+              AND status_cd = 0
+        )
+    </select>
+
+    <select id="selectCommunityWithProperty" resultMap="CommunityInfoVOMap" parameterType="map">
+        SELECT
+        c.community_id,
+        c.name,
+        c.city_code,
+        c.create_time,
+        s.name AS store_name,  <!-- 映射到 propertyName -->
+
+        c.nearby_landmarks,
+        c.address,
+        c.pay_fee_month,
+        c.fee_price,
+        c.tel,
+        c.state
+        FROM s_community c
+        <!-- 左连接社区成员表，筛选成员类型为 390001200002 -->
+        LEFT JOIN s_community_member m
+        ON c.community_id = m.community_id
+        AND m.member_type_cd = '390001200002'
+        <!-- 左连接店铺表，关联 member_id 和 store_id -->
+        LEFT JOIN s_store s
+        ON m.member_id = s.store_id
+        <!-- 查询条件 -->
+        <where>
+            <if test="communityId != null and communityId != ''">
+                AND c.community_id LIKE CONCAT('%', #{communityId}, '%')
+            </if>
+            <if test="cityCode != null and cityCode != ''">
+                AND c.city_code LIKE CONCAT('%', #{cityCode}, '%')
+            </if>
+            <if test="name != null and name != ''">
+                AND c.name LIKE CONCAT('%', #{name}, '%')
+            </if>
+            AND c.status_cd = 0
+            AND m.status_cd = 0
+        </where>
+        ORDER BY c.create_time DESC, c.community_id DESC
+    </select>
+</mapper>

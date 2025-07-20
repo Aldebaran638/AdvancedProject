@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zeroone.star.orgmanager.mapper.ShiftSettingMapper">
+
+    <select id="listClassWithTime" resultType="java.util.Map">
+        SELECT
+            c.classes_id AS "classesId",
+            c.name AS "name",
+            c.state AS "state",
+            c.create_time AS "createTime",
+            c.remark AS "remark",
+            COALESCE(GROUP_CONCAT(CONCAT(t.start_time, '~', t.end_time) SEPARATOR ','), '') AS "workTime"
+        FROM
+            classes c
+                LEFT JOIN
+            classes_time t ON c.classes_id = t.classes_id AND t.status_cd = '0'
+        <where>
+            c.state = #{state} AND c.status_cd = #{statusCd} AND c.store_id = #{storeId}
+            <if  test="name != null">
+                AND c.name LIKE CONCAT('%', #{name}, '%')
+            </if>
+        </where>
+        GROUP BY
+            c.classes_id, c.name, c.create_time
+        ORDER BY
+            c.create_time DESC
+    </select>
+
+    <insert id="insertClassesTimeBatch">
+        insert into classes_time(time_id, classes_id, start_time, end_time, create_time, status_cd)
+        VALUES
+        <foreach collection ="classesTimeList" item="it" separator =",">
+            (#{it.timeId}, #{it.classesId}, #{it.startTime}, #{it.endTime}, #{it.createTime}, #{it.statusCd})
+        </foreach>
+    </insert>
+</mapper>

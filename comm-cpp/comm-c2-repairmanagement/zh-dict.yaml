@@ -1,0 +1,456 @@
+﻿forceback:
+  force-back:
+    summary-query-all: 获取强制回单列表
+    summary-add: 新增一条强制回单数据
+    summary-modify: 强制回单操作
+    repair_type: 报修类型
+    repair_name: 报修人
+    repair_obj_name: 报修位置
+    tel: 报修人电话
+    appointment_time: 预约时间
+    create_time: 提交时间
+    state: 状态
+    remark: 备注
+    default-repair_type: 102024021885971825(下水道堵塞)/102024022016205365(换灯)/102024022738800012（水电）/102023053136440010（测试打印类型）
+    default-repair_name: 张三
+    repair_id: 工单编码
+    maintenance_type: 维修类型
+    repair_materials: 维修物料
+    repair_fee: 总价
+    pay_type: 支付方式
+    pay_type_detail: 现金
+    community_id: 小区id
+    repair_type_detail: 报修类型中文映射
+    state_detail: 报修状态中文映射
+    materials: 商品列表
+    res_id: 商品ID
+    material_id: 商品材料ID
+    material_name: 商品名称
+    material_count: 商品数量
+    material_unit: 商品单位 
+    material_specification: 商品规格
+    material_price: 商品单价
+    material_name_example: 电池
+    material_unit_example: 个
+    finish_context: 处理意见
+    context_finish_example: 提交订单
+    maintenance_type_detail: 1003需要用料，1004无需用料
+
+
+repairdone:
+  repair-done:
+    query-all: 获取报修已办单列表
+    repair_id: 工单编码
+    repair_obj_name: 位置
+    repair_type: 报修类型
+    maintenance_type: 维修类型
+    repair_name: 报修人
+    tel: 报修人电话
+    appointment_time: 预约时间
+    state: 报修状态
+    default-maintenance_type: 1001（有偿服务）/ 1002（无偿服务）
+    default-repair_name: 张三
+    default-repair_type: 102024021885971825(下水道堵塞)/102024022016205365(换灯)/102024022738800012（水电）/102023053136440010（测试打印类型）
+    default-state: 1000（未派单）/1100（接单）/1200（退单）/1300（转单）/1400（申请支付）/1500（支付失败）/
+                       1700（待评价）/1800（电话回访）/1900（办理完成）/2000（未办理结单）/2001（暂停）
+    community_id: 小区id     
+    state_detail: 报修状态中文映射
+    repair_type_detail: 报修类型中文映射
+    maintenance_type_detail: 维修类型中文映射
+     
+     
+repairreturn:
+  repair-return:
+    summary-query-all: 获取回访单列表
+    summary-add: 添加一条报修回访反馈数据
+    summary-modify: 修改报修回访数据
+    repair_id: 工单编码
+    repair_type: 报修类型
+    repair_name: 报修人
+    repair_obj_name: 报修位置
+    tel: 报修人电话
+    state: 回访状态
+    appointment_time: 预约时间
+    remark: 备注
+    visit_type: 满意度
+    context: 回访内容
+    default-state: 11000（待评价）/10008（已回访）
+    default-repair_type: 102024021885971825(下水道堵塞)/102024022016205365(换灯)/102024022738800012（水电）/102023053136440010（测试打印类型）
+    default-repair_name: 张三
+    community_id: 小区id
+    visit_person_name: 回访人
+    repair_type_detail: 报修类型中文映射
+    state_detail: 报修状态中文映射
+    
+    
+repairsettingtype:
+  delete:
+    summary: 删除报修设置类型
+  field:
+    repair_type_name: 维修类型名称
+    repair_way: 维修方式
+    is_shou: 是否展示
+    remark: 备注
+    repair_setting_type: 维修设置类型
+    public_area: 是否是公共区域
+    notify_type: 通知方式
+    return_visit_flag: 是否支持退回来访
+    repair_type: 维修类型
+    setting_id: 工单ID
+    b_id: 业务ID
+    community_id: 小区ID
+    status_cd: 状态编码
+    pay_fee_flag: 是否收费
+    price_scope: 收费范围
+repair-worker:
+  query: 
+    summary: 获取报修师傅列表（条件+分页）
+    name: 请输入报修师傅姓名
+    user_id: 请输入报修师傅用户ID
+  add:
+    summary: 添加报修师傅
+  field:
+    name: 姓名
+    photo_path: 照片路径
+    creat_time: 创建时间
+    org_id: 组织ID
+    age: 年龄
+    tel: 手机号
+    sex: 性别
+    email: 邮箱
+    address: 地址
+    id: id
+    user_id: 用户ID
+    password: 密码
+    location_cd: 用户地区
+    level_cd: 用户级别
+    b_id: 业务ID
+    status_cd: 状态编码
+    repair_type: 维修类型
+    status: 状态
+    repair_type_name: 维修类型名称
+  # DTO等跟数据库相关需要的中文
+  repair-mysql:
+    retypename: 类型名称
+    rway: 派单方式
+    retypesetting: 报修类型设置
+    cid: 区域
+    ishow: 选填，说明
+    nway: 必填，通知方式
+    rvisitflag: 是否回访
+
+repairsetting: 
+  # controller接口需要的中文
+  repair-controller:
+    get: 获取报修设置类型列表
+    add: 添加报修设置类型
+    modify: 修改报修设置类型
+    delete: 删除报修设置类型
+    outtypename: 类型名称
+    typename: 修水管(任意名称)
+    outway: 派单方式
+    way: 100 抢单 200 指派 300 轮训
+    outset: 报修类型设置
+    set: 100 保洁单 200 维修单
+    outid: 区域
+    id: T 非房屋 F 房屋
+    outvisit: 是否回访
+    visit: 001 都不回访 002 已评价不回访 003 都回访
+    coid: 小区id
+    cid: 小区id 如 2024022154856948
+  repair-worker-name:
+    repair-type: 维修类型id 
+    repair-type-name: 维修类型名称 
+    community-id: 小区id
+    repair-id: 报修工单id
+    staff-name: 维修师傅姓名
+    summary-query-all: 查询符合条件的所有维修师傅的名字
+    default-repair-type-name: 请输入维修类型名称（例如：下水道堵塞）
+    default-community-id:
+    default-repair-id: 
+  repair-worker:
+    summary-query-all: 获取报修师傅列表（条件+分页）
+    summary-add: 添加报修师傅
+    state: 维修师傅状态
+    state-txt: 维修师傅状态中文文本
+    staff-id: 维修师傅id
+    remark: 备注
+    repair-type: 维修类型id 
+    repair-type-name: 维修类型名称 
+    community-id: 小区id
+    repair-id: 报修工单id
+    staff-name: 维修师傅姓名
+    create-time: 数据创建时间
+    summary-modify: 变更报修师傅
+    summary-remove: 删除报修师傅
+    default-repair-type-name: 修水管
+    default-community-id: 请输入小区分片id（例如：2023052267100146）
+    default-repair-id: 请输入报修工单id（例如：822023053180260013）
+    default-state-txt: 在线
+    default-remark: 生病
+    org-name: 组织名称
+    default-org-name: xx物业
+  repair-mysql:
+    retypename: 类型名称
+    rway: 派单方式
+    parea: 是否为公共区域
+    retypesetting: 报修类型设置
+    cid: 社区id
+    ishow: 业主端是否展示  Y 是  N 否
+    nway: 通知方式  SMS 短信 WECHAT 微信
+    rvisitflag: 是否回访
+    remark: 填写说明
+    ctime: 数据创建时间
+  repair-default:
+    rtname: 修水管(任意名称)
+    remark: 说明
+
+repairtodo:
+  query:
+    repair_id: 工单编号 
+    repair_name: 报修人
+    tel: 报修人电话
+    repair_type: 报修类型ID
+    state: 报修状态（如：接单）
+    staff_id: 维修师傅ID 
+    community_id: 小区ID 
+    state-1100: 接单
+    state-1200: 退单
+    state-1300: 转单 
+    state-1400: 申请支付
+    state-1500: 支付失败
+    state-1600: 支付成功
+    state-1700: 待评价
+    state-1800: 电话回访
+    state-1900: 办理完成
+    state-2000: 未办理结单
+    state-2001: 暂停
+  modify:
+    finish: 报修管理-报修待办-办结
+    suspend: 报修管理-报修待办-暂停
+  field:
+    query-all-repair-type: 查询该小区中的所有报修类型
+    query-all-staff: 查询该报修类型对应的所有报修师傅
+    query-all: 报修待办--分页查询获取待办列表
+    delete: 报修待办--退单处理
+    modify: 报修待办--改单处理
+    finish: 报修待办--办结处理
+    community_id: 小区ID
+    staff_id: 维修师傅ID
+    repair_id: 报修单id
+    repair_name: 报修人姓名
+    tel: 电话
+    type: 报修类型
+    state: 状态
+    repair_obj_name: 位置（报修对象名称）
+    repair_type_name: 维修类型名称
+    appointment_time: 预约时间
+    start_time: 开始时间
+    end_time: 结束时间
+    create_time: 创建时间
+    finish_time: 完成时间
+    suspend_time: 暂停时间
+    repair_obj_type: 报修对象类型
+    context: 报修内容
+    remove_context: 退单原因
+    suspend_context: 暂停原因
+    state_detail: 状态详情
+    ru_id: 报修派单ID
+    staff_name: 维修师傅姓名
+    repair_type: 报修类型ID
+
+    finish_context: 办结处理意见
+    res_id: 商品ID(先检查是否需要用料，如有需要，则给出用料ID)
+    res_count: 商品数量
+    is_material: 是否使用材料
+    pay_type: 支付方式 (四种里面选一个 现金 微信转账 微信公众号 支付宝 我在后端写了判断)
+    price: 价格
+    total_price: 总价(如果是房屋报修则需要总价，否则不需要)
+    pre_staff_id: 上一级维修师傅ID
+    pre_staff_name: 上一级维修师傅姓名
+    public_area: 是否公共区域（T/F）
+    repair_obj_id: 报修对象ID,如果是公共区域那么就是小区ID，否则是房屋ID
+
+
+    materials: 商品材料列表
+    material_id: 商品材料ID
+    material_name: 商品材料名称
+    material_count: 商品材料数量
+    material_unit: 商品材料单位 (如果是房屋报修需要商品材料单位，否则不需要)
+    material_specification: 商品材料规格
+
+    material_total_price: 材料总价(如果是房屋报修则需要，否则不需要)
+    is_use_material: 是否使用材料
+    repair_after_photo_path: 维修后照片路径
+    repair_before_photo_path: 维修前照片路径
+    room_id: 房间ID (如果是房屋报修则需要房间ID，否则不需要)
+
+
+
+
+    community_id_default: 需要传入账户id作为查询的参数，如：2025052665960005
+    staff_id_default: 需要传入员工id作为查询的参数，如：302025052626190081
+    repair_type_name_default: 请输入报修类型名称（如：电梯维修）
+    repair_id_default: 请输入维修ID（如：822025052766720091）
+    repair_name_default: 请输入报修人姓名（如：张三）
+    tel_default: 请输入报修人电话（如：13812345678）
+    repair_type_default: 请输入报修类型ID（如：102025052701090065）
+    state_default: 请输入报修状态（如：接单）
+
+    res_id_default: 请输入资源ID（如：102025052701090065）
+
+    res_count_example: 1(用料数量)
+    pay_type_example: 微信转账
+
+
+
+    material_name_example: 电池
+    material_unit_example: 个
+    context_remove_example: 我要退单
+    context_finish_example: 处理意见：我要办结
+    context_suspend_example: 我要暂停
+    context_update_example: 我就要改单
+    staff_name_example: 张三
+
+
+  pay:
+    type1: 现金
+    type2: 微信转账
+    type3: 微信公众号
+    type4: 支付宝
+    discribe1: 待支付
+    discribe2: 元
+
+taskpool: 
+  task-detail:
+    summary-query-by-id: 获取工单池工单详情
+    summary-add: 派单
+    summary-export: 打印工单
+    default-staff-name: 阿姨
+    default-user-context: 好的
+    default-state: 已派单
+    staff-name: 处理人
+    state: 状态
+    start-time: 处理时间
+    cost: 耗时
+    user-context: 意见
+    default-repair-id: 如:822023080257540003
+    repair-id: 工单编号
+  task-list:
+    community-id: 小区编号（前端传入）
+    repair-id: 工单编号
+    repair-type: 报修类型
+    repair-name: 报修人
+    tel: 报修电话
+    repair-setting-type: 报修设置类型
+    repair-setting-type-100: 保洁单
+    repair-setting-type-200: 维修单
+    repair-obj-name: 报修位置
+    appointment-time: 预约时间
+    create-time: 提交时间
+    state: 状态
+    task-state: 工单详情状态
+    task-context: 报修内容
+    maintenance-type: 维修类型
+    start-time: 开始时间
+    end-time: 结束时间
+    default-repair-name: 赵子龙
+    default-repair-type: 如：测试打印类型
+    default-repair-setting-type: 100 保洁单/200 维修单
+    default-repair-obj-name: HC演示小区3
+    default-maintenance-type: 1001 有偿服务/1002 无偿服务/1003 需要用料/1004 无需用料
+    default-maintenance-type-txt: 维修类型中文映射
+    default-task-context: 快处理
+    default-state: 1000 未派单/1100 接单/1200 退单/1300 转单/1400 申请支付/1500 支付失败/1700 待评价/1800 电话回访/1900 办理完成/2000 未办理结单
+    default-state-txt: 状态中文映射
+    summary-delete: 删除工单
+    summary-modify: 修改工单
+    summary-query-all: 获取工单列表
+    front-community-id: 小区编号（前端传入）
+    front-repair-id: 工单编号（前端传入）
+    maintenance-type-txt: 维修类型中文映射
+    state-txt: 状态中文映射
+    maintenance-type-1001: 有偿服务
+    maintenance-type-1002: 无偿服务
+    maintenance-type-1003: 需要用料
+    maintenance-type-1004: 无需用料
+    state-1000: 未派单
+    state-1100: 接单
+    state-1200: 退单
+    state-1300: 转单
+    state-1400: 申请支付
+    state-1500: 支付失败
+    state-1700: 待评价
+    state-1800: 电话回访
+    state-1900: 办理完成
+    state-2000: 未办理结单
+
+task-detail:
+   field2:
+      repair-id: "工单编号"
+      repair-type: "工单类型"
+      repair-type-txt: "工单类型文本" 
+      repair-name: "报修人"
+      tel: "联系方式"
+      repair-obj-name: "报修位置名称"
+      appointment-time: "预约开始时间"
+      timeout-time: "预约超时时间"
+      time: "提单时长"
+      complete-time: "完成时间"
+      state: "状态"
+      state-txt: "状态文本" 
+      context: "报修内容"
+      create-time: "创建时间"
+
+tell-repair:
+ field:
+  repair_id: 电话报修ID
+  b_id: 业务ID
+  community_id: 小区ID
+  repair_type: 电话报修类型
+  repair_type_txt: 电话报修类型文本
+  repair_name: 电话报修人姓名
+  tel: 电话报修人电话
+  context: 电话报修内容
+  create_time: 创建时间
+  state: 电话报修状态，请查看state表
+  state_txt: 电话报修状态文本
+  status_cd: 数据状态
+  repair_obj_type: 电话报修对象类型,001小区,002楼栋,003单元,004 房屋
+  repair_obj_id: 电话报修对象ID
+  repair_obj_name: 电话报修对象名称
+  appointment_time: 预约时间
+  maintenance_type: 维修类型,1001有偿服务,1002无偿服务
+  repair_channel: 电话报修渠道,D员工代客报修,T电话报修,Z业主自主保修
+  repair_materials: 维修材料
+  repair_fee: 费用明细:单价*数量=总价
+  pay_type: 支付方式1、现金2、微信转账3、微信公众号4支付宝
+  building: 归属楼栋
+  unit: 归属单元
+  house: 归属房屋
+  timeout_time: 超时时间
+ api:
+  queryAll: 获取电话报修列表
+  add: 添加电话报修
+  modify: 修改电话报修
+  remove: 删除电话报修
+ default:
+  repair_id: 如:1234567890123456789
+  b_id: 如:1234567890123456789
+  community_id: 如:1234567890123456789
+  repair_type: 如:102023053136440010 详情请查看报修设置
+  repair_name: 如:张三
+  tel: 如:13800000000
+  context: 如:厨房水管漏水
+  create_time: 如:2023-01-01 12:00:00
+  state: 如:1100 详情请查看报修设置
+  status_cd: 请输入数据状态
+  repair_obj_type: 001小区,002楼栋,003单元,004 房屋
+  repair_obj_id: 如:1234567890123456789
+  repair_obj_name: 如:1号楼2单元301室
+  appointment_time: 如:2023-01-02 09:00:00
+  maintenance_type: 1001有偿服务,1002无偿服务
+  repair_channel: D员工代客报修,T电话报修,Z业主自主保修
+  repair_materials: 如:水管、阀门
+  repair_fee: 如:50*2=100
+  pay_type: 1、现金2、微信转账3、微信公众号4支付宝

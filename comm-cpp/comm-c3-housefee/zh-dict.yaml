@@ -1,0 +1,118 @@
+﻿#熬易废
+record:
+ get: 
+  detail_id: 编号
+  receipt_id: 费用项
+  pay_obj: 收费对象
+  cycle: 周期(单位:月)
+  receive_received: 应收/实收(单位:元)
+  receivable_amount: 应收费用
+  amount: 实收费用 
+  pay_path: 缴费方式
+  pay_period: 缴费起始段
+  start_time: 开始时间
+  end_time: 结束时间
+  pay_time: 缴费时间
+  receive_id: 收银员
+  status_cd: 状态
+  remark: 备注
+  opt: 操作
+detail:
+ get:
+  fee_id: 缴费ID
+  cycle: 周期(单位:月)
+  pay_path: 缴费方式
+  receivable_amount: 应收金额
+  amount: 实收金额
+  pay_time: 缴费时间
+  start_time: 缴费开始
+  end_time: 缴费结束
+  receive_id: 收银员
+  status_cd: 状态
+  remark: 备注
+  opt: 操作
+modify:
+ get:
+  fee_id: 费用类型
+  fee_name: 费用名字
+  fee_pro: 费用项
+  obj_name: 收费对象
+  pay_start: 建账时间
+  pay_end: 计费起始时间
+  actions: 动作
+  oporator: 操作人
+  opt_time: 操作时间
+menu-catalog:
+ record: 
+  summary: 获取缴纳记录（条件+分页）
+ detail: 
+  summary: 获取缴纳记录详情
+ modify: 
+  summary: 获取费用修改记录（条件+分页）
+
+#z
+house_fee: 
+ add: 
+  fee_type: 费用类型
+  fee_type_default: 物业费
+  charge_project: 收费项目
+  charge_project_default: 房屋管理费
+  start_time: 开始时间
+  end_time: 结束时间
+  house_id: 房屋号
+  amount: 金额
+  community_id: 社区id
+  title: 创建房屋费用
+  config_id: 配置id
+ modify:
+  fee_id : 费用id
+  create_time: 建账时间
+  start_time: 应收开始时间
+  end_time: 应收结束时间
+  title: 变更房屋费用
+ pay:
+   pay_fee_time: 缴费时间
+   cycle: 缴费周期
+   real_cycle: 实际缴费周期
+   amount: 实收款
+   amount_due: 应缴金额
+   pay_amount: 应收款
+   remark: 备注
+   remark_default: 这是一条备注
+   pay_fee_start_time: 收费开始时间
+   pay_fee_end_time: 收费截至时间
+   title: 缴纳房屋费用
+   flag: 是否选择账户
+ reduce:
+  title: 取消房屋费用
+account:
+ info:
+  type: 账户类型
+  name: 账户名
+  amount: 账户金额
+
+
+#413dik
+HouseFeeMgr:
+ query: 
+  summary: 获取房屋费用列表（条件+分页）
+ query-by-fee_id: 
+  summary: 获取房屋费用详情
+ query-by-roomNum: 
+  summary: 获取房屋费用项信息
+ field: 
+  fee_id: 费用id
+  fee_name: 费用项目
+  fee_flag: 费用标识
+  fee_type: 费用类型
+  fee_pay: 应收金额
+  makeTime: 建帐时间
+  startTime: 计费起始时间
+  endTime: 计费结束时间
+  owner_id: 业主id
+  ownerNameLike: 业主名称
+  owner_phone: 业主联系方式
+  roomNum: 房屋号
+  fee_order: 费用批次
+  status: 状态
+  communityId: 社区id

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zeroone.star.systemmanage.mapper.InitCommunityMapper">
+
+    <select id="queryList" resultType="com.zeroone.star.systemmanage.entity.SCommunityDO">
+        SELECT * from s_community
+        <where>
+            <if test="name != null">
+                and name like concat('%',#{name},'%')
+            </if>
+            <if test="communityId != null">
+                and community_id = #{communityId}
+            </if>
+        </where>
+        LIMIT
+    </select>
+
+</mapper>

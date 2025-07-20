@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zeroone.star.cachemanage.mapper.CacheManagerMapper">
+
+    <select id="selectAllCaches" resultType="com.zeroone.star.cachemanage.entity.CCacheDO">
+        select id,cache_code,name from c_cache
+        <where>
+            <if test="cacheQuery.id!=null">
+               id=#{cacheQuery.id}
+            </if>
+            <if test="cacheQuery.cacheCode!=null and cacheQuery.cacheCode!='' ">
+                and cache_code=#{cacheQuery.cacheCode}
+            </if>
+            <if test="cacheQuery.name!=null and cacheQuery.name !='' ">
+                and name=#{cacheQuery.name}
+            </if>
+        </where>
+    </select>
+</mapper>

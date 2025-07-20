@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 对应 IFileRelDao 接口 -->
+<mapper namespace="com.zeroone.star.propertymanage.mapper.FileRelMapper">
+
+    <!-- 保存文件关联信息 -->
+    <!-- 对应 file_rel 表字段: file_rel_id, file_id, obj_id, rel_type_cd, save_way, file_real_name, file_save_name, status_cd, b_id, create_time -->
+    <!-- 参数类型使用 Map -->
+    <insert id="saveFileRel" parameterType="map">
+        insert into file_rel(
+            file_rel_id, obj_id, rel_type_cd, save_way, file_real_name, file_save_name, status_cd, b_id, create_time
+        ) values (
+                     #{fileRelId}, #{objId}, #{relTypeCd}, #{saveWay}, #{fileRealName}, #{fileSaveName}, '0', '-1', #{createTime}
+                 )
+    </insert>
+
+</mapper>

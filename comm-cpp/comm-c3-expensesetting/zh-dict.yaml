@@ -1,0 +1,101 @@
+﻿#bewater
+FeeMgr:
+ query: 
+  summary: 获取折扣信息（条件+分页）
+ 
+ field: 
+  discount_id: 打折id
+  discount_name: 打折名称
+  discount_type: 折扣类型
+  
+  status: 状态
+  disount_rule: 折扣规则
+  start_time: 缴费起始时间
+  end_time: 缴费结束时间
+  discount_end_time: 折扣终止时间
+  fee_id: 编号
+  fee_type: 费用类型
+  fee_project: 收费项目
+  fee_flag: 费用标识
+  urge_type: 催缴类型
+  pay_type: 付费类型
+  pay_cycle: 付费周期
+  valid_time: 有效期
+  pay_formula: 公式
+  pay_price: 计费单价
+  pay_extra: 计费附加
+  account_deduction: 账户抵扣
+   
+/FeeMgr/query:
+ get:
+  summary: 分页查询折扣
+/FeeMgr/insert:
+ post:
+  summary: 添加折扣
+
+/FeeMgr/delete:
+ delete:
+  summary: 删除折扣
+/FeeMgr/getFeeItemInfo:
+ get:
+  summary: 获取费用项基础信息
+
+
+#34014
+feeMgr :
+ get:
+  summary : 获取费用项列表（条件+分页）
+  getItem : 获取费用项名称列表
+ field:
+  config_id: 主键ID(如:922025052064590009)
+  fee_type_cd: 费用类型(如:888800010012)
+  fee_name: 收费项目
+  fee_flag: 费用标识 (一次性/周期性费用，如:2006012)
+  payment_cd: 付费类型 (预付费,如:1200)
+  payment_cycle: 缴费周期
+  start_time: 开始时间
+  end_time: 结束时间
+  validDate: 有效期
+  computing_formula: 计算公式
+  square_price: 计费单价
+  additional_amount: 固定费用
+  deduct_from: 是否支持账户抵扣
+  itemList : 费用项列表
+  community_id : 小区ID
+
+#nybs
+/fee_itemlog/query:
+ get:
+  summary: 获取费用项修改记录（条件+分页）
+/fee_itemlog/insert:
+ post:
+  summary: 添加费用
+/fee_itemlog/modify:
+ put:
+  summary: 修改费用
+/fee_itemlog/delete:
+ delete:
+  summary: 删除费用
+fee-item:
+ field:
+  fee_type_cd: 费用类型
+  fee_flag: 费用标识
+  fee_name: 收费项目
+  payment_cd: 付费类型
+  payment_cycle: 缴费周期
+  prepayment_period: 预付期
+  start_time: 开始时间
+  end_time: 结束时间
+  units: 单位
+  deduct_from: 是否支持账户抵扣
+  pay_online: 手机缴费
+  scale: 进位方式
+  decimal_place: 保留小数位
+  computing_formula: 计算公式
+  square_price: 计费单价
+  additional_amount: 固定费用
+  create_time: 创建时间
+  user_id: 操作人
+  user_name: 操作人姓名
+  config_id: 主键
+  community_id: 社区ID

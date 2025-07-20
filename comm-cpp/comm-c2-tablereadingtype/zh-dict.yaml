@@ -1,0 +1,19 @@
+﻿table-reading-type: 
+  field: 
+    type-id: 抄表类型id
+    type-name: 名称
+    remark: 说明
+    create-time: 创建时间
+    community-id: 小区id
+    status-cd: 状态代码
+  query-all: 
+    summary: 抄表类型分页查询
+  post: 
+    summary: 新增抄表类型
+  update: 
+    summary: 修改抄表类型
+  delete: 
+    summary: 删除抄表类型
+  status:
+    success: 200 成功
+    failed: 500 失败

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zeroone.star.dashboard.mapper.CommonmenuMapper">
+
+    <select id="selectCommonmenuAll"
+            resultType="com.zeroone.star.project.dto.j1.menumana.commonmenu.CommonMenuDTO">
+        select mu.m_id as muId,
+            mu.name as name,
+            mu.url as url,
+            mu.seq as seq
+        from m_menu mu
+        where mu.g_id = #{menuGroupId}
+    </select>
+</mapper>

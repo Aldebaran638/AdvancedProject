@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zeroone.star.parkmanage.mapper.OwnerVehicleMapper">
+    <!-- 已有的映射... -->
+
+    <!-- 插入停车区域 -->
+    <insert id="insertParkingArea" parameterType="com.zeroone.star.parkmanage.entity.ParkingArea">
+        INSERT INTO parking_area (
+            pa_id, num, community_id, status_cd, create_time,
+            b_id, type_cd, remark
+        ) VALUES (
+            #{paId}, #{num}, #{communityId}, #{statusCd},
+            DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'),
+            #{bId}, #{typeCd}, #{remark}
+        )
+    </insert>
+
+    <!-- 插入车位信息 -->
+    <insert id="insertParkingSpace" parameterType="com.zeroone.star.parkmanage.entity.ParkingSpace">
+        INSERT INTO parking_space (
+            ps_id, num, pa_id, status_cd, create_time, b_id, community_id, state, area, remark, parking_type
+        ) VALUES (
+            #{psId}, #{num}, #{paId}, #{statusCd}, DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'), #{bId}, #{communityId}, #{state}, #{area}, #{remark}, #{parkingType}
+        )
+    </insert>
+
+    <!-- 插入业务订单 -->
+    <insert id="insertOrder" parameterType="com.zeroone.star.parkmanage.entity.COrders">
+        INSERT INTO c_orders (
+            o_id, app_id, order_type_cd, status_cd,
+            create_time, ext_transaction_id, user_id, request_time, finish_time, remark
+        ) VALUES (
+            #{orderId}, #{appId}, #{orderTypeCd}, #{statusCd},
+            DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'), #{extTransactionId}, #{userId}, #{requestTime}, #{finishTime}, #{remark}
+        )
+    </insert>
+
+    <!-- 插入操作日志 -->
+    <insert id="insertLog" parameterType="com.zeroone.star.parkmanage.entity.UnitemLog">
+        INSERT INTO unitem_log (
+            b_id, log_text, status_cd, create_time, o_id, service_name
+        ) VALUES (
+            #{bId}, #{operateContent}, #{statusCd}, DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'), #{oId}, #{serviceName}
+        )
+    </insert>
+
+    <!-- 根据停车场编号和小区ID查询停车场信息 -->
+    <select id="getParkingAreaByNumAndCommunityId" resultType="com.zeroone.star.parkmanage.entity.ParkingArea">
+        SELECT
+            pa_id, b_id, community_id, num, type_cd, remark, create_time, status_cd
+        FROM
+            parking_area
+        WHERE
+            num = #{num}
+            AND community_id = #{communityId}
+            AND status_cd = '0'
+    </select>
+
+    <!-- 根据车位编号和停车场ID查询车位信息 -->
+    <select id="getParkingSpaceByNumAndPaId" resultType="com.zeroone.star.parkmanage.entity.ParkingSpace">
+        SELECT
+            ps_id, b_id, community_id, num, pa_id, state, area, remark, create_time, status_cd, parking_type
+        FROM
+            parking_space
+        WHERE
+            num = #{num}
+            AND pa_id = #{paId}
+            AND status_cd = '0'
+    </select>
+
+    <!-- 根据业主姓名和手机号查询业主信息 -->
+    <select id="getOwnerByNameAndTel" resultType="com.zeroone.star.parkmanage.entity.BuildingOwner">
+        SELECT member_id, name, link, user_id, community_id
+        FROM building_owner
+        WHERE name = #{name} AND link = #{tel} AND status_cd = '0'
+    </select>
+
+    <!-- 根据停车场区域和车位编号查询车位信息 -->
+    <select id="getParkingSpaceByNums" resultType="com.zeroone.star.parkmanage.entity.ParkingSpace">
+        SELECT ps.ps_id, ps.num, ps.state, ps.parking_type, ps.pa_id
+        FROM parking_space ps
+                 JOIN parking_area pa ON ps.pa_id = pa.pa_id
+        WHERE pa.num = #{areaNum} AND ps.num = #{spaceNum} AND ps.status_cd = '0' AND pa.status_cd = '0'
+    </select>
+
+    <!-- 查询同一辆车在同一车位的所有历史记录 -->
+    <select id="findCarHistoryByCarNumAndPsId" resultType="com.zeroone.star.parkmanage.entity.OwnerCar">
+        SELECT 
+            oc.*,
+            ps.num as spaceNum,
+            pa.num as areaNum
+        FROM 
+            owner_car oc
+            LEFT JOIN parking_space ps ON oc.ps_id = ps.ps_id
+            LEFT JOIN parking_area pa ON ps.pa_id = pa.pa_id
+        WHERE 
+            oc.car_num = #{carNumber}
+            AND oc.ps_id = #{psId}
+        ORDER BY 
+            oc.create_time DESC
+    </select>
+
+    <!-- 根据车牌号和车位ID查询车辆记录 -->
+    <select id="findCarByCarNumAndPsId" resultType="com.zeroone.star.parkmanage.entity.OwnerCar">
+        SELECT 
+            oc.*,
+            ps.num as spaceNum,
+            pa.num as areaNum
+        FROM 
+            owner_car oc
+            LEFT JOIN parking_space ps ON oc.ps_id = ps.ps_id
+            LEFT JOIN parking_area pa ON ps.pa_id = pa.pa_id
+        WHERE 
+            oc.car_num = #{carNumber}
+            AND oc.ps_id = #{psId}
+    </select>
+
+    <!-- 插入业务车辆记录 -->
+    <insert id="insertBusinessOwnerCar" parameterType="com.zeroone.star.parkmanage.entity.BusinessOwnerCar">
+        INSERT INTO business_owner_car (
+            member_id, owner_id, car_id, ps_id, car_num, car_type, car_type_cd,
+            car_brand, car_color, start_time, end_time, community_id, operate,
+            b_id, create_time, state, lease_type, user_id
+        ) VALUES (
+            #{memberId}, #{ownerId}, #{carId}, #{psId}, #{carNum}, #{carType}, #{carTypeCd},
+            #{carBrand}, #{carColor}, #{startTime}, #{endTime}, #{communityId}, #{operate},
+            #{bId}, DATE_FORMAT(NOW(), '%Y-%m-%d %H:%i:%s'), #{state}, #{leaseType}, #{userId}
+        )
+    </insert>
+    <!-- 获取车辆列表（条件+分页）-->
+    <resultMap id="selectOwnerCarInfoByPage" type="com.zeroone.star.project.vo.j7.parkmanage.ownervehicle.OwnerCarInfoVO">
+        <id property="areaNum" column="area_num"/>
+        <id property="spaceNum" column="space_num"/>
+        <id property="memberCarNum" column="member_car_num"/>
+    </resultMap>
+    <select id="selectOwnerCarInfoByPage" resultMap="selectOwnerCarInfoByPage">
+        SELECT
+        DISTINCT
+        oc.car_num, br.section, br.layer, br.room_num, oc.lease_type, oc.car_type, oc.car_color,
+        bo.name, bo.link, pa.num AS area_num, ps.num AS space_num, oc.start_time, oc.end_time, oc.create_time,
+        oc.state, oc.remark, oc.member_id, oc.community_id, oc.car_id, oc.owner_id,
+        (SELECT COUNT(member_car.car_id) -- 统计成员车辆数量
+        FROM owner_car member_car
+        WHERE member_car.car_id = oc.member_id
+        AND member_car.car_type_cd = '1002'
+        AND member_car.status_cd = '0') AS member_car_num
+        FROM owner_car oc
+        JOIN building_room br ON oc.user_id = br.user_id
+        JOIN building_owner bo ON oc.owner_id = bo.owner_id
+        JOIN parking_space ps ON oc.ps_id = ps.ps_id
+        JOIN parking_area pa ON ps.pa_id = pa.pa_id
+        <where>
+            oc.car_type_cd = '1001' -- 只查询主车辆
+            AND oc.status_cd = '0' -- 只查询在用的车辆
+            AND oc.community_id = #{carQuery.communityId} -- 只查询这个小区的车辆
+            <if test="carQuery.carNum != null and carQuery.carNum != ''">
+                AND oc.car_num LIKE CONCAT('%', #{carQuery.carNum}, '%')
+            </if>
+            <if test="carQuery.num != null and carQuery.num != ''">
+                AND ps.num = #{carQuery.num}
+            </if>
+            <if test="carQuery.valid != null and carQuery.valid != ''">
+                <choose>
+                    <!-- 当valid=1时，查询state=1001或2002而且时间没过期的记录 -->
+                    <when test="carQuery.valid == 1">
+                        AND (oc.state IN ('1001', '2002') AND oc.end_time > NOW())
+                    </when>
+                    <!-- 当valid=3时，查询state=3003或时间过期的记录 -->
+                    <when test="carQuery.valid == 3">
+                        AND (oc.state = '3003' OR oc.end_time &lt; NOW())
+                    </when>
+                    <otherwise>
+                        AND 1=0
+                    </otherwise>
+                </choose>
+            </if>
+            <if test="carQuery.name != null and carQuery.name != ''">
+                AND bo.name LIKE CONCAT('%', #{carQuery.name}, '%')
+            </if>
+            <if test="carQuery.link != null and carQuery.link != ''">
+                AND bo.link = #{carQuery.link}
+            </if>
+            <if test="carQuery.memberCarNum != null and carQuery.memberCarNum != ''">
+                AND oc.car_id IN (
+                SELECT mc.car_id
+                FROM owner_car mc
+                WHERE mc.car_num LIKE CONCAT('%', #{carQuery.memberCarNum}, '%')
+                )
+            </if>
+            <if test="carQuery.leaseType != null and carQuery.leaseType != ''">
+                AND oc.lease_type = #{carQuery.leaseType}
+            </if>
+        </where>
+        ORDER BY oc.create_time DESC
+    </select>
+</mapper>
