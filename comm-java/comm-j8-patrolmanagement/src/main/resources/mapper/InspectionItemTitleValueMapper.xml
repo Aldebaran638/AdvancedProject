@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zeroone.star.patrolmgt.mapper.InspectionItemTitleValueMapper">
-
-    <select id="selectByTitleId" resultType="com.zeroone.star.patrolmgt.entity.InspectionItemTitleValue">
-        SELECT * FROM inspection_item_title_value WHERE title_id = #{titleId}
-    </select>
-</mapper>

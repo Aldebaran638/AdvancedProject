@@ -1,8 +1,0 @@
-server:
-  port: ${sp.patrolmanagement}
-spring:
-  application:
-    name: ${sn.patrolmanagement}
-mybatis-plus:
-  mapper-locations: classpath*:mapper/**/*.xml
-  type-aliases-package: com.zeroone.star.patrolmgt.entity

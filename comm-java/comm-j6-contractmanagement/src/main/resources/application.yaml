@@ -1,6 +1,0 @@
-server:
-  port: ${sp.contractmanagement}
-spring:
-  application:
-    name: ${sn.contractmanagement}
-#    name: comm-contract-management

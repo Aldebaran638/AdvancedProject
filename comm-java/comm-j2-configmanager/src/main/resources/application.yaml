@@ -1,7 +1,0 @@
-server:
-  port: ${sp.j2configmanager}
-spring:
-  application:
-    name: ${sn.j2configmanager}
-
-

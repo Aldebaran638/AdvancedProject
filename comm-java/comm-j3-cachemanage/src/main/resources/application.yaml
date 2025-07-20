@@ -1,5 +1,0 @@
-server:
-  port: ${sp.cachemanage}
-spring:
-  application:
-    name: ${sn.cachemanage}

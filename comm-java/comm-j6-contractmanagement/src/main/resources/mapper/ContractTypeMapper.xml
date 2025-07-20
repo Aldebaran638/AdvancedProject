@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zeroone.star.contractmanagement.mapper.ContractTypeMapper">
-
-    <delete id="deleteByContractTypeId">
-        delete from contract_type where contract_type_id=#{contractTypeId}
-    </delete>
-</mapper>

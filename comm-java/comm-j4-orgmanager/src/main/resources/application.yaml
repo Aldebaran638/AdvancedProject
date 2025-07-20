@@ -1,7 +1,0 @@
-server:
-  port: ${sp.orgmg}
-spring:
-  application:
-    name: ${sn.orgmg}
-mybatis:
-  mapper-locations: classpath:/mapper/*.xml
